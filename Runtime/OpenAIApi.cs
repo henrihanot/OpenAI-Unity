@@ -131,6 +131,28 @@ namespace OpenAI
 
                         try
                         {
+                            var finishReason = value.Split("finish_reason");
+
+                            if (finishReason[1].Contains("stop")
+                                || finishReason[1].Contains("length")
+                                || finishReason[1].Contains("function_call")
+                                || finishReason[1].Contains("content_filter"))
+                            {
+                                StringBuilder sb = new StringBuilder();
+                                foreach (char c in finishReason[1])
+                                {
+                                    if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.' || c == '_')
+                                    {
+                                        sb.Append(c);
+                                    }
+                                }
+
+                                Debug.Log($"OpenAIApi::DispatchRequest finish_reason = {sb}");
+
+                                isDone = true;
+                                break;
+                            }
+
                             var data = JsonConvert.DeserializeObject<T>(value, jsonSerializerSettings);
 
                             if (data?.Error != null)
