@@ -128,17 +128,24 @@ namespace OpenAI
                             isDone = true;
                             break;
                         }
-                        
-                        var data = JsonConvert.DeserializeObject<T>(value, jsonSerializerSettings);
 
-                        if (data?.Error != null)
+                        try
                         {
-                            ApiError error = data.Error;
-                            Debug.LogError($"Error Message: {error.Message}\nError Type: {error.Type}\n");
+                            var data = JsonConvert.DeserializeObject<T>(value, jsonSerializerSettings);
+
+                            if (data?.Error != null)
+                            {
+                                ApiError error = data.Error;
+                                Debug.LogError($"Error Message: {error.Message}\nError Type: {error.Type}\n");
+                            }
+                            else
+                            {
+                                dataList.Add(data);
+                            }
                         }
-                        else
+                        catch (Exception e)
                         {
-                            dataList.Add(data);
+                            Debug.LogError($"OpenAIApi::DispatchRequest error = {e}");
                         }
                     }
                     onResponse?.Invoke(dataList);
