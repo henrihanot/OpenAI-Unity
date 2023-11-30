@@ -122,7 +122,8 @@ namespace OpenAI
                     foreach (string line in lines)
                     {
                         var value = line.Replace("data: ", "");
-                        if (value.Contains("stop")) 
+
+                        if (value.Contains("[DONE]")) 
                         {
                             isDone = true;
                             break;
