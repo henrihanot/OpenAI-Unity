@@ -129,11 +129,11 @@ namespace OpenAI
                             break;
                         }
 
-                        try
+                        /*try
                         {
                             UnityEngine.Debug.Log(line);
 
-                            /*
+                            
                             var finishReason = value.Split("finish_reason");
 
                             if (finishReason[1].Contains("stop")
