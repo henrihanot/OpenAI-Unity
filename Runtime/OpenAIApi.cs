@@ -129,8 +129,9 @@ namespace OpenAI
                             break;
                         }
 
-                        /*try
+                        try
                         {
+                            /*
                             var finishReason = value.Split("finish_reason");
 
                             if (finishReason[1].Contains("stop")
@@ -152,7 +153,7 @@ namespace OpenAI
                                 isDone = true;
                                 break;
                             }
-
+                            */
                             var data = JsonConvert.DeserializeObject<T>(value, jsonSerializerSettings);
 
                             if (data?.Error != null)
@@ -168,7 +169,7 @@ namespace OpenAI
                         catch (Exception e)
                         {
                             Debug.LogError($"OpenAIApi::DispatchRequest error = {e}");
-                        }*/
+                        }
                     }
                     onResponse?.Invoke(dataList);
                     
