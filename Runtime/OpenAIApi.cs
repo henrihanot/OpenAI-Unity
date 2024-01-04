@@ -129,7 +129,7 @@ namespace OpenAI
                             break;
                         }
 
-                        try
+                        /*try
                         {
                             var finishReason = value.Split("finish_reason");
 
@@ -168,7 +168,7 @@ namespace OpenAI
                         catch (Exception e)
                         {
                             Debug.LogError($"OpenAIApi::DispatchRequest error = {e}");
-                        }
+                        }*/
                     }
                     onResponse?.Invoke(dataList);
                     
