@@ -131,6 +131,8 @@ namespace OpenAI
 
                         try
                         {
+                            UnityEngine.Debug.Log(line);
+
                             /*
                             var finishReason = value.Split("finish_reason");
 
@@ -153,7 +155,7 @@ namespace OpenAI
                                 isDone = true;
                                 break;
                             }
-                            */
+                            
                             var data = JsonConvert.DeserializeObject<T>(value, jsonSerializerSettings);
 
                             if (data?.Error != null)
@@ -169,7 +171,7 @@ namespace OpenAI
                         catch (Exception e)
                         {
                             Debug.LogError($"OpenAIApi::DispatchRequest error = {e}");
-                        }
+                        }*/
                     }
                     onResponse?.Invoke(dataList);
                     
