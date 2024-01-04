@@ -121,6 +121,9 @@ namespace OpenAI
 
                     foreach (string line in lines)
                     {
+                        UnityEngine.Debug.Log(line);
+
+                        /*
                         var value = line.Replace("data: ", "");
 
                         if (value.Contains("[DONE]")) 
@@ -129,9 +132,11 @@ namespace OpenAI
                             break;
                         }
 
-                        /*try
+                        
+
+                        try
                         {
-                            UnityEngine.Debug.Log(line);
+                            
 
                             
                             var finishReason = value.Split("finish_reason");
