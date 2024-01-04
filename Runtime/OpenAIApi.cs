@@ -121,9 +121,9 @@ namespace OpenAI
 
                     foreach (string line in lines)
                     {
-                        UnityEngine.Debug.Log(line);
+                        //UnityEngine.Debug.Log(line);
 
-                        /*
+                        
                         var value = line.Replace("data: ", "");
 
                         if (value.Contains("[DONE]")) 
@@ -132,13 +132,8 @@ namespace OpenAI
                             break;
                         }
 
-                        
-
                         try
                         {
-                            
-
-                            
                             var finishReason = value.Split("finish_reason");
 
                             if (finishReason[1].Contains("stop")
@@ -176,7 +171,7 @@ namespace OpenAI
                         catch (Exception e)
                         {
                             Debug.LogError($"OpenAIApi::DispatchRequest error = {e}");
-                        }*/
+                        }
                     }
                     onResponse?.Invoke(dataList);
                     
